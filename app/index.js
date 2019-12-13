@@ -59,9 +59,54 @@
 
 // app.listen(3000);
 
-import {request} from './request.js';
+import { request } from './request.js';
 
-( async () => {console.log( await request({
-    url: `https://www.sportinglife.com/api/horse-racing/racing/racecards/2019-11-13`,
-    method: 'GET',
-}))})();
+const URL_DAY = 'https://www.sportinglife.com/api/horse-racing/racing/racecards/';
+const URL_RACE = 'https://www.sportinglife.com/api/horse-racing/race/';
+
+
+function dateGenerator(amountDays) {
+    const dates = [];
+    let day = new Date();
+    for (let i = 0; i < amountDays; i++) {
+        day.setDate(day.getDate() - 1);
+        dates.push(`${day.getFullYear()}-${('0' + (day.getMonth() + 1)).slice(-2)}-${('0' + day.getDate()).slice(-2)}`)
+        // console.log(`${day.getFullYear()}-${ ('0'+(day.getMonth()+1)).slice(-2)}-${('0'+day.getDate()).slice(-2)}`, day);
+    }
+    return dates;
+}
+
+function getRacesToDay(date) {
+    return request({
+        url: `${URL_DAY}` + date,
+        method: 'GET',
+    });
+}
+
+async function getAgreements(date) {
+    try {
+        const result = await getRacesToDay(date);
+        let listIds = [];
+
+        for (var i = 0; i < result.length; i++) {
+            filtraIds(result[i].races)
+        }
+
+
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+(async () => {
+    // console.log(await request({
+    //     url: `https://www.sportinglife.com/api/horse-racing/racing/racecards/2019-11-13`,
+    //     method: 'GET',
+    // }))
+
+    console.log(await getRacesToDay('2019-11-20'))
+
+
+
+
+})();
