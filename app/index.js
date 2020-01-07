@@ -116,23 +116,7 @@ function formatOdd(odd) {
     return ((parseFloat(number[0]) / parseFloat(number[1])) + 1).toFixed(2)
 }
 
-
-
-(async () => {
-    // console.log(await request({
-    //     url: `https://www.sportinglife.com/api/horse-racing/racing/racecards/2019-11-13`,
-    //     method: 'GET',
-    // }))
-
-    // console.log(await getRacesToDay('2019-11-20'))
-
-    // const dates = dateGenerator(30);
-
-    // for (const date of dates) {
-    //     await filtraIdsRaces(date)
-    // }
-
-    const result = await getRaceInfo('559122');
+function extractInfoRace(result){
 
     const data = {
         idSportinglife: result.race_summary.race_summary_reference.id,
@@ -168,10 +152,42 @@ function formatOdd(odd) {
         oddP10Dec: result.rides[9] ? result.rides[9].betting.current_odds : 'NaN',
         oddP11Dec: result.rides[10] ? result.rides[10].betting.current_odds : 'NaN',
         oddP12Dec: result.rides[11] ? result.rides[11].betting.current_odds : 'NaN',
+        premiumP1: result.prizes.prize[0] ? result.prizes.prize[0].prize : 'undefined',
+        premiumP2: result.prizes.prize[1] ? result.prizes.prize[1].prize : 'undefined',
+        premiumP3: result.prizes.prize[2] ? result.prizes.prize[2].prize : 'undefined',
+        premiumP4: result.prizes.prize[3] ? result.prizes.prize[3].prize : 'undefined',
+        premiumP5: result.prizes.prize[4] ? result.prizes.prize[4].prize : 'undefined',
+        premiumP6: result.prizes.prize[5] ? result.prizes.prize[5].prize : 'undefined',
+        premiumP7: result.prizes.prize[6] ? result.prizes.prize[6].prize : 'undefined',
+        premiumP8: result.prizes.prize[7] ? result.prizes.prize[7].prize : 'undefined',
+        premiumP9: result.prizes.prize[8] ? result.prizes.prize[8].prize : 'undefined',
+        premiumP10: result.prizes.prize[9] ? result.prizes.prize[9].prize : 'undefined',
     }
 
-    // console.log(result.rides[0].betting.current_odds);
     console.log(data);
+    
+}
+
+
+(async () => {
+    // console.log(await request({
+    //     url: `https://www.sportinglife.com/api/horse-racing/racing/racecards/2019-11-13`,
+    //     method: 'GET',
+    // }))
+
+    // console.log(await getRacesToDay('2019-11-20'))
+
+    const dates = dateGenerator(30);
+
+    for (const date of dates) {
+        const ids = await filtraIdsRaces(date)
+        for (const id of ids){
+            extractInfoRace(await getRaceInfo(id));
+        }
+    }
+
+    // const result = await getRaceInfo('559122');
+
 
     // filtraIdsRaces('2019-11-20')
     // console.log( await filtraIdsRaces('2019-11-20'));
