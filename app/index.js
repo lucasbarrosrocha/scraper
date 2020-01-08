@@ -1,65 +1,6 @@
-// const express = require('express');
-
-// const { HorsesRace } = require('./models');
-// const app = express();
-
-// app.use(express.urlencoded({ extended: false }));
-
-// app.get('/', (req, res) => {
-//     res.send('Hello World!');
-// });
-
-// HorsesRace.create({
-
-//     idSportinglife: 54654,  race_summary.race_summary_reference.id
-//     date: new Date('2019-10-13'),
-//     hour: '20:00', race_summary.time
-//     name: 'Corrida teste',  race_summary.name
-//     place: 'Campina grande',
-//     track: 'Amigão',
-//     age: '6546',
-//     amountRunners: 6,
-//     precision: 'aqui nao sei',
-//     oddP1: 1.58,
-//     oddP2: 1.58,
-//     oddP3: 1.58,
-//     oddP4: 1.58,
-//     oddP5: 1.58,
-//     oddP6: 1.58,
-//     oddP7: 1.58,
-//     oddP8: 1.58,
-//     oddP9: 1.58,
-//     oddP10: 1.58,
-//     oddP11: 1.58,
-//     oddP12: 1.58,
-//     oddP1Dec: '5/7',
-//     oddP2Dec: '5/7',
-//     oddP3Dec: '5/7',
-//     oddP4Dec: '5/7',
-//     oddP5Dec: '5/7',
-//     oddP6Dec: '5/7',
-//     oddP7Dec: '5/7',
-//     oddP8Dec: '5/7',
-//     oddP9Dec: '5/7',
-//     oddP10Dec: '5/7',
-//     oddP11Dec: '5/7',
-//     oddP12Dec: '5/7',
-//     premiumP1: '100050',
-//     premiumP2: '100050',
-//     premiumP3: '100050',
-//     premiumP4: '100050',
-//     premiumP5: '100050',
-//     premiumP6: '100050',
-//     premiumP7: '100050',
-//     premiumP8: '100050',
-//     premiumP9: '100050',
-//     premiumP10: '100050',
-
-// });
-
-// app.listen(3000);
-
 import { request } from './request.js';
+const { HorsesRace } = require('./models');
+
 
 const URL_DAY = 'https://www.sportinglife.com/api/horse-racing/racing/racecards/';
 const URL_RACE = 'https://www.sportinglife.com/api/horse-racing/race/';
@@ -112,11 +53,11 @@ function filtraIds(lista) {
 }
 
 function formatOdd(odd) {
-    const number = odd.split('/');
-    return ((parseFloat(number[0]) / parseFloat(number[1])) + 1).toFixed(2)
+    const number = odd ? odd.split('/') : odd;
+    return number ? ((parseFloat(number[0]) / parseFloat(number[1])) + 1).toFixed(2) : -1.0;
 }
 
-function extractInfoRace(result){
+function extractInfoRace(result) {
 
     const data = {
         idSportinglife: result.race_summary.race_summary_reference.id,
@@ -125,21 +66,22 @@ function extractInfoRace(result){
         name: result.race_summary.name,
         place: result.race_summary.course_name,
         track: result.race_summary.course_surface.surface,
-        age: result.race_summary.age,
+        age: result.race_summary.age ? result.race_summary.age : 'undefined' ,
         amountRunners: result.race_summary.ride_count,
-        precision: result.betting_forecast,
-        oddP1: result.rides[0] ? formatOdd(result.rides[0].betting.current_odds) : 'NaN',
-        oddP2: result.rides[1] ? formatOdd(result.rides[1].betting.current_odds) : 'NaN',
-        oddP3: result.rides[2] ? formatOdd(result.rides[2].betting.current_odds) : 'NaN',
-        oddP4: result.rides[3] ? formatOdd(result.rides[3].betting.current_odds) : 'NaN',
-        oddP5: result.rides[4] ? formatOdd(result.rides[4].betting.current_odds) : 'NaN',
-        oddP6: result.rides[5] ? formatOdd(result.rides[5].betting.current_odds) : 'NaN',
-        oddP7: result.rides[6] ? formatOdd(result.rides[6].betting.current_odds) : 'NaN',
-        oddP8: result.rides[7] ? formatOdd(result.rides[7].betting.current_odds) : 'NaN',
-        oddP9: result.rides[8] ? formatOdd(result.rides[8].betting.current_odds) : 'NaN',
-        oddP10: result.rides[9] ? formatOdd(result.rides[9].betting.current_odds) : 'NaN',
-        oddP11: result.rides[10] ? formatOdd(result.rides[10].betting.current_odds) : 'NaN',
-        oddP12: result.rides[11] ? formatOdd(result.rides[11].betting.current_odds) : 'NaN',
+        precision: 'teste',
+        // precision: result.betting_forecast,
+        oddP1: result.rides[0] ? formatOdd(result.rides[0].betting.current_odds) : -1.0,
+        oddP2: result.rides[1] ? formatOdd(result.rides[1].betting.current_odds) : -1.0,
+        oddP3: result.rides[2] ? formatOdd(result.rides[2].betting.current_odds) : -1.0,
+        oddP4: result.rides[3] ? formatOdd(result.rides[3].betting.current_odds) : -1.0,
+        oddP5: result.rides[4] ? formatOdd(result.rides[4].betting.current_odds) : -1.0,
+        oddP6: result.rides[5] ? formatOdd(result.rides[5].betting.current_odds) : -1.0,
+        oddP7: result.rides[6] ? formatOdd(result.rides[6].betting.current_odds) : -1.0,
+        oddP8: result.rides[7] ? formatOdd(result.rides[7].betting.current_odds) : -1.0,
+        oddP9: result.rides[8] ? formatOdd(result.rides[8].betting.current_odds) : -1.0,
+        oddP10: result.rides[9] ? formatOdd(result.rides[9].betting.current_odds) : -1.0,
+        oddP11: result.rides[10] ? formatOdd(result.rides[10].betting.current_odds) : -1.0,
+        oddP12: result.rides[11] ? formatOdd(result.rides[11].betting.current_odds) : -1.0,
         oddP1Dec: result.rides[0] ? result.rides[0].betting.current_odds : 'NaN',
         oddP2Dec: result.rides[1] ? result.rides[1].betting.current_odds : 'NaN',
         oddP3Dec: result.rides[2] ? result.rides[2].betting.current_odds : 'NaN',
@@ -163,34 +105,24 @@ function extractInfoRace(result){
         premiumP9: result.prizes.prize[8] ? result.prizes.prize[8].prize : 'undefined',
         premiumP10: result.prizes.prize[9] ? result.prizes.prize[9].prize : 'undefined',
     }
+    return data;
+}
 
-    console.log(data);
-    
+function saveDB(data) {
+    HorsesRace.create(data);
 }
 
 
 (async () => {
-    // console.log(await request({
-    //     url: `https://www.sportinglife.com/api/horse-racing/racing/racecards/2019-11-13`,
-    //     method: 'GET',
-    // }))
-
-    // console.log(await getRacesToDay('2019-11-20'))
-
-    const dates = dateGenerator(30);
+    const dates = dateGenerator(365);
 
     for (const date of dates) {
         const ids = await filtraIdsRaces(date)
-        for (const id of ids){
-            extractInfoRace(await getRaceInfo(id));
+        for (const id of ids) {
+            console.log('ID -----------------------------------> ', id)
+            const data = extractInfoRace(await getRaceInfo(id));
+            saveDB(data);
         }
     }
-
-    // const result = await getRaceInfo('559122');
-
-
-    // filtraIdsRaces('2019-11-20')
-    // console.log( await filtraIdsRaces('2019-11-20'));
-    // console.log(dates);
 
 })();
