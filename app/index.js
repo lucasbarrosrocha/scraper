@@ -68,8 +68,8 @@ function extractInfoRace(result) {
         track: result.race_summary.course_surface.surface,
         age: result.race_summary.age ? result.race_summary.age : 'undefined' ,
         amountRunners: result.race_summary.ride_count,
-        precision: 'teste',
-        // precision: result.betting_forecast,
+        // precision: 'teste',
+        description: result.betting_forecast ? String(result.betting_forecast) : 'undefined',
         oddP1: result.rides[0] ? formatOdd(result.rides[0].betting.current_odds) : -1.0,
         oddP2: result.rides[1] ? formatOdd(result.rides[1].betting.current_odds) : -1.0,
         oddP3: result.rides[2] ? formatOdd(result.rides[2].betting.current_odds) : -1.0,
@@ -121,6 +121,7 @@ function saveDB(data) {
         for (const id of ids) {
             console.log('ID -----------------------------------> ', id)
             const data = extractInfoRace(await getRaceInfo(id));
+            // console.log(data);
             saveDB(data);
         }
     }

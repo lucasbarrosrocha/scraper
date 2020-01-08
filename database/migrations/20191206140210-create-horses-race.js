@@ -41,9 +41,9 @@ module.exports = {
         allowNull: false,
         type: DataTypes.INTEGER,
       },
-      precision: {
-        allowNull: false,
-        type: DataTypes.STRING,
+      description: {
+        // allowNull: false,
+        type: DataTypes.TEXT,
       },
       oddP1: {
         type: DataTypes.FLOAT,
