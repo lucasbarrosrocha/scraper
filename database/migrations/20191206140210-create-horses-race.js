@@ -81,6 +81,33 @@ module.exports = {
       oddP12: {
         type: DataTypes.FLOAT,
       },
+      oddP13: {
+        type: DataTypes.FLOAT,
+      },
+      oddP14: {
+        type: DataTypes.FLOAT,
+      },
+      oddP15: {
+        type: DataTypes.FLOAT,
+      },
+      oddP16: {
+        type: DataTypes.FLOAT,
+      },
+      oddP17: {
+        type: DataTypes.FLOAT,
+      },
+      oddP18: {
+        type: DataTypes.FLOAT,
+      },
+      oddP19: {
+        type: DataTypes.FLOAT,
+      },
+      oddP20: {
+        type: DataTypes.FLOAT,
+      },
+      oddP21: {
+        type: DataTypes.FLOAT,
+      },
       oddP1Dec: {
         type: DataTypes.STRING,
       },
@@ -115,6 +142,33 @@ module.exports = {
         type: DataTypes.STRING,
       },
       oddP12Dec: {
+        type: DataTypes.STRING,
+      },
+      oddP13Dec: {
+        type: DataTypes.STRING,
+      },
+      oddP14Dec: {
+        type: DataTypes.STRING,
+      },
+      oddP15Dec: {
+        type: DataTypes.STRING,
+      },
+      oddP16Dec: {
+        type: DataTypes.STRING,
+      },
+      oddP17Dec: {
+        type: DataTypes.STRING,
+      },
+      oddP18Dec: {
+        type: DataTypes.STRING,
+      },
+      oddP19Dec: {
+        type: DataTypes.STRING,
+      },
+      oddP20Dec: {
+        type: DataTypes.STRING,
+      },
+      oddP21Dec: {
         type: DataTypes.STRING,
       },
       premiumP1: {
