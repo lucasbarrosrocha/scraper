@@ -5,6 +5,8 @@ const { HorsesRace } = require('./models');
 const URL_DAY = 'https://www.sportinglife.com/api/horse-racing/racing/racecards/';
 const URL_RACE = 'https://www.sportinglife.com/api/horse-racing/race/';
 
+const URL_DAY_GALGOS = 'https://www.sportinglife.com/api/greyhound-racing/racing/racecards/'
+const URL_RACE_GALGOS = 'https://www.sportinglife.com/api/greyhound-racing/race/183070'
 
 function dateGenerator(amountDays) {
     const dates = [];
@@ -31,9 +33,39 @@ function getRaceInfo(id) {
     });
 }
 
+function getRacesToDayGalgos(date) {
+    return request({
+        url: `${URL_DAY_GALGOS}` + date,
+        method: 'GET',
+    });
+}
+
+function getRaceInfoGalgos(id) {
+    return request({
+        url: `${URL_RACE_GALGOS}` + id,
+        method: 'GET',
+    });
+}
+
 async function filtraIdsRaces(date) {
     try {
         const result = await getRacesToDay(date);
+        let idCorridas = [];
+
+        for (let i = 0; i < result.length; i++) {
+            idCorridas = [...idCorridas, ...filtraIds(result[i].races)];
+        }
+
+        return idCorridas;
+
+    } catch (err) {
+        console.log('erro: ', err);
+    }
+}
+
+async function filtraIdsRacesGalgos(date) {
+    try {
+        const result = await getRacesToDayGalgos(date);
         let idCorridas = [];
 
         for (let i = 0; i < result.length; i++) {
@@ -134,6 +166,7 @@ function saveDB(data) {
 (async () => {
     const dates = dateGenerator(365);
 
+    /*
     for (const date of dates) {
         const ids = await filtraIdsRaces(date)
         for (const id of ids) {
@@ -143,5 +176,8 @@ function saveDB(data) {
             saveDB(data);
         }
     }
+    */
+
+    console.log(await filtraIdsRacesGalgos('2020-01-05'))
 
 })();
