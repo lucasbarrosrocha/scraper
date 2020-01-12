@@ -6,6 +6,7 @@ module.exports = (sequelize, DataTypes) => {
         name: DataTypes.STRING,
         classe: DataTypes.STRING,
         amountRunners: DataTypes.INTEGER,
+        prizes: DataTypes.TEXT,
         description: DataTypes.TEXT,
         oddP1: DataTypes.FLOAT,
         oddP2: DataTypes.FLOAT,
@@ -19,9 +20,6 @@ module.exports = (sequelize, DataTypes) => {
         oddP4Dec: DataTypes.STRING,
         oddP5Dec: DataTypes.STRING,
         oddP6Dec: DataTypes.STRING,
-        premiumP1: DataTypes.STRING,
-        premiumP2: DataTypes.STRING,
-        premiumP3: DataTypes.STRING,
     });
 
     return GalgosRace;

@@ -2,7 +2,7 @@
 
 module.exports = {
   up: (queryInterface, DataTypes) => {
-    return queryInterface.createTable('GalgosRace', {
+    return queryInterface.createTable('GalgosRaces', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -33,6 +33,9 @@ module.exports = {
         allowNull: false,
         type: DataTypes.INTEGER,
       },
+      prizes: {
+        type: DataTypes.STRING,
+      },
       description: {
         // allowNull: false,
         type: DataTypes.TEXT,
@@ -44,6 +47,15 @@ module.exports = {
         type: DataTypes.FLOAT,
       },
       oddP3: {
+        type: DataTypes.FLOAT,
+      },
+      oddP4: {
+        type: DataTypes.FLOAT,
+      },
+      oddP5: {
+        type: DataTypes.FLOAT,
+      },
+      oddP6: {
         type: DataTypes.FLOAT,
       },
       oddP1Dec: {
@@ -64,15 +76,6 @@ module.exports = {
       oddP6Dec: {
         type: DataTypes.STRING,
       },
-      premiumP1: {
-        type: DataTypes.STRING,
-      },
-      premiumP2: {
-        type: DataTypes.STRING,
-      },
-      premiumP3: {
-        type: DataTypes.STRING,
-      },
       createdAt: {
         allowNull: false,
         type: DataTypes.DATE,
@@ -85,6 +88,6 @@ module.exports = {
   },
 
   down: (queryInterface) => {
-    return queryInterface.dropTable('GalgosRace');
+    return queryInterface.dropTable('GalgosRaces');
   }
 };
