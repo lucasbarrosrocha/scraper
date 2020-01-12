@@ -12,6 +12,7 @@ module.exports = {
       idSportinglife: {
         allowNull: false,
         type: DataTypes.INTEGER,
+        unique: true,
       },
       date: {
         allowNull: false,
@@ -21,186 +22,83 @@ module.exports = {
         allowNull: false,
         type: DataTypes.STRING,
       },
-      name: {
-        allowNull: false,
-        type: DataTypes.STRING,
-      },
-      place: {
-        allowNull: false,
-        type: DataTypes.STRING,
-      },
-      track: {
-        allowNull: false,
-        type: DataTypes.STRING,
-      },
-      age: {
-        allowNull: false,
-        type: DataTypes.STRING,
-      },
-      amountRunners: {
-        allowNull: false,
-        type: DataTypes.INTEGER,
-      },
-      description: {
-        // allowNull: false,
-        type: DataTypes.TEXT,
-      },
-      oddP1: {
-        type: DataTypes.FLOAT,
-      },
-      oddP2: {
-        type: DataTypes.FLOAT,
-      },
-      oddP3: {
-        type: DataTypes.FLOAT,
-      },
-      oddP4: {
-        type: DataTypes.FLOAT,
-      },
-      oddP5: {
-        type: DataTypes.FLOAT,
-      },
-      oddP6: {
-        type: DataTypes.FLOAT,
-      },
-      oddP7: {
-        type: DataTypes.FLOAT,
-      },
-      oddP8: {
-        type: DataTypes.FLOAT,
-      },
-      oddP9: {
-        type: DataTypes.FLOAT,
-      },
-      oddP10: {
-        type: DataTypes.FLOAT,
-      },
-      oddP11: {
-        type: DataTypes.FLOAT,
-      },
-      oddP12: {
-        type: DataTypes.FLOAT,
-      },
-      oddP13: {
-        type: DataTypes.FLOAT,
-      },
-      oddP14: {
-        type: DataTypes.FLOAT,
-      },
-      oddP15: {
-        type: DataTypes.FLOAT,
-      },
-      oddP16: {
-        type: DataTypes.FLOAT,
-      },
-      oddP17: {
-        type: DataTypes.FLOAT,
-      },
-      oddP18: {
-        type: DataTypes.FLOAT,
-      },
-      oddP19: {
-        type: DataTypes.FLOAT,
-      },
-      oddP20: {
-        type: DataTypes.FLOAT,
-      },
-      oddP21: {
-        type: DataTypes.FLOAT,
-      },
-      oddP1Dec: {
-        type: DataTypes.STRING,
-      },
-      oddP2Dec: {
-        type: DataTypes.STRING,
-      },
-      oddP3Dec: {
-        type: DataTypes.STRING,
-      },
-      oddP4Dec: {
-        type: DataTypes.STRING,
-      },
-      oddP5Dec: {
-        type: DataTypes.STRING,
-      },
-      oddP6Dec: {
-        type: DataTypes.STRING,
-      },
-      oddP7Dec: {
-        type: DataTypes.STRING,
-      },
-      oddP8Dec: {
-        type: DataTypes.STRING,
-      },
-      oddP9Dec: {
-        type: DataTypes.STRING,
-      },
-      oddP10Dec: {
-        type: DataTypes.STRING,
-      },
-      oddP11Dec: {
-        type: DataTypes.STRING,
-      },
-      oddP12Dec: {
-        type: DataTypes.STRING,
-      },
-      oddP13Dec: {
-        type: DataTypes.STRING,
-      },
-      oddP14Dec: {
-        type: DataTypes.STRING,
-      },
-      oddP15Dec: {
-        type: DataTypes.STRING,
-      },
-      oddP16Dec: {
-        type: DataTypes.STRING,
-      },
-      oddP17Dec: {
-        type: DataTypes.STRING,
-      },
-      oddP18Dec: {
-        type: DataTypes.STRING,
-      },
-      oddP19Dec: {
-        type: DataTypes.STRING,
-      },
-      oddP20Dec: {
-        type: DataTypes.STRING,
-      },
-      oddP21Dec: {
-        type: DataTypes.STRING,
-      },
-      premiumP1: {
-        type: DataTypes.STRING,
-      },
-      premiumP2: {
-        type: DataTypes.STRING,
-      },
-      premiumP3: {
-        type: DataTypes.STRING,
-      },
-      premiumP4: {
-        type: DataTypes.STRING,
-      },
-      premiumP5: {
-        type: DataTypes.STRING,
-      },
-      premiumP6: {
-        type: DataTypes.STRING,
-      },
-      premiumP7: {
-        type: DataTypes.STRING,
-      },
-      premiumP8: {
-        type: DataTypes.STRING,
-      },
-      premiumP9: {
-        type: DataTypes.STRING,
-      },
-      premiumP10: {
-        type: DataTypes.STRING,
-      },
+      name: DataTypes.STRING,
+      place: DataTypes.STRING,
+      track: DataTypes.STRING,
+      age: DataTypes.STRING,
+      amountRunners: DataTypes.INTEGER,
+      description: DataTypes.TEXT,
+      oddP1: DataTypes.FLOAT,
+      oddP2: DataTypes.FLOAT,
+      oddP3: DataTypes.FLOAT,
+      oddP4: DataTypes.FLOAT,
+      oddP5: DataTypes.FLOAT,
+      oddP6: DataTypes.FLOAT,
+      oddP7: DataTypes.FLOAT,
+      oddP8: DataTypes.FLOAT,
+      oddP9: DataTypes.FLOAT,
+      oddP10: DataTypes.FLOAT,
+      oddP11: DataTypes.FLOAT,
+      oddP12: DataTypes.FLOAT,
+      oddP13: DataTypes.FLOAT,
+      oddP14: DataTypes.FLOAT,
+      oddP15: DataTypes.FLOAT,
+      oddP16: DataTypes.FLOAT,
+      oddP17: DataTypes.FLOAT,
+      oddP18: DataTypes.FLOAT,
+      oddP19: DataTypes.FLOAT,
+      oddP20: DataTypes.FLOAT,
+      oddP21: DataTypes.FLOAT,
+      oddP1Dec: DataTypes.STRING,
+      oddP2Dec: DataTypes.STRING,
+      oddP3Dec: DataTypes.STRING,
+      oddP4Dec: DataTypes.STRING,
+      oddP5Dec: DataTypes.STRING,
+      oddP6Dec: DataTypes.STRING,
+      oddP7Dec: DataTypes.STRING,
+      oddP8Dec: DataTypes.STRING,
+      oddP9Dec: DataTypes.STRING,
+      oddP10Dec: DataTypes.STRING,
+      oddP11Dec: DataTypes.STRING,
+      oddP12Dec: DataTypes.STRING,
+      oddP13Dec: DataTypes.STRING,
+      oddP14Dec: DataTypes.STRING,
+      oddP15Dec: DataTypes.STRING,
+      oddP16Dec: DataTypes.STRING,
+      oddP17Dec: DataTypes.STRING,
+      oddP18Dec: DataTypes.STRING,
+      oddP19Dec: DataTypes.STRING,
+      oddP20Dec: DataTypes.STRING,
+      oddP21Dec: DataTypes.STRING,
+      premiumP1: DataTypes.STRING,
+      premiumP2: DataTypes.STRING,
+      premiumP3: DataTypes.STRING,
+      premiumP4: DataTypes.STRING,
+      premiumP5: DataTypes.STRING,
+      premiumP6: DataTypes.STRING,
+      premiumP7: DataTypes.STRING,
+      premiumP8: DataTypes.STRING,
+      rideToFinish1: DataTypes.INTEGER,
+      rideToFinish2: DataTypes.INTEGER,
+      rideToFinish3: DataTypes.INTEGER,
+      rideToFinish4: DataTypes.INTEGER,
+      rideToFinish5: DataTypes.INTEGER,
+      rideToFinish6: DataTypes.INTEGER,
+      rideToFinish7: DataTypes.INTEGER,
+      rideToFinish8: DataTypes.INTEGER,
+      rideToFinish9: DataTypes.INTEGER,
+      rideToFinish10: DataTypes.INTEGER,
+      rideToFinish11: DataTypes.INTEGER,
+      rideToFinish12: DataTypes.INTEGER,
+      rideToFinish13: DataTypes.INTEGER,
+      rideToFinish14: DataTypes.INTEGER,
+      rideToFinish15: DataTypes.INTEGER,
+      rideToFinish16: DataTypes.INTEGER,
+      rideToFinish17: DataTypes.INTEGER,
+      rideToFinish18: DataTypes.INTEGER,
+      rideToFinish19: DataTypes.INTEGER,
+      rideToFinish20: DataTypes.INTEGER,
+      rideToFinish21: DataTypes.INTEGER,
       createdAt: {
         allowNull: false,
         type: DataTypes.DATE,
