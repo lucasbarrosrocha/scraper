@@ -16,12 +16,13 @@ module.exports = {
       },
       date: {
         allowNull: false,
-        type: DataTypes.DATE,
+        type: DataTypes.STRING,
       },
       hour: {
         allowNull: false,
         type: DataTypes.STRING,
       },
+      time: DataTypes.BIGINT,
       name: DataTypes.STRING,
       classe: DataTypes.STRING,
       amountRunners: DataTypes.INTEGER,

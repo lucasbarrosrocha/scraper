@@ -94,8 +94,9 @@ function extractInfoRace(result) {
 
     const data = {
         idSportinglife: result.race_summary.race_summary_reference.id,
-        date: new Date(result.race_summary.date),
+        date: result.race_summary.date,
         hour: result.race_summary.time,
+        time: new Date(`${result.race_summary.date}T${result.race_summary.time}`).getTime(),
         name: result.race_summary.name,
         place: result.race_summary.course_name,
         track: result.race_summary.course_surface.surface,
@@ -186,8 +187,9 @@ function extractInfoRaceGalgos(result) {
 
     const data = {
         idSportinglife: result.race_summary.race_summary_reference.id,
-        date: new Date(result.race_summary.date),
+        date: result.race_summary.date,
         hour: result.race_summary.time,
+        time: new Date(`${result.race_summary.date}T${result.race_summary.time}`).getTime(),
         name: result.race_summary.course_name,
         classe: result.race_summary.race_class ? result.race_summary.race_class : null,
         amountRunners: result.betting_forecast ? (result.betting_forecast).split(',').length : -1,

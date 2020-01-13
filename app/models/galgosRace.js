@@ -1,8 +1,9 @@
 module.exports = (sequelize, DataTypes) => {
     const GalgosRace = sequelize.define('GalgosRace', {
         idSportinglife: DataTypes.INTEGER,
-        date: DataTypes.DATE,
+        date: DataTypes.STRING,
         hour: DataTypes.STRING,
+        time: DataTypes.BIGINT,
         name: DataTypes.STRING,
         classe: DataTypes.STRING,
         amountRunners: DataTypes.INTEGER,
