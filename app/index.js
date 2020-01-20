@@ -253,10 +253,11 @@ async function runScraperGalgos(dates) {
 
 (async () => {
 
-    const dates = dateGenerator(365);
-    //const dates = dateGenerator(365, '2019-10-12');
+    // const dates = dateGenerator(365);
+    const dates = dateGenerator(1000, '2018-09-20');
+    // console.log(dates);
 
-    runScraperGalgos(dates);
+    // runScraperGalgos(dates);
     runScraperHorses(dates);
 
 })();
